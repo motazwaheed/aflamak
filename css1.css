@@ -1,0 +1,728 @@
+ /* ============= المتغيرات العامة ============= */
+ :root {
+    --base-font-size: 1rem;
+    --spacing-unit: 1rem;
+    --primary-color: #FFB100;
+    --dark-bg: #1a1a1a;
+    --secondary-bg: #222831;
+    --text-color: #ffffff;
+    --border-radius: 0.5rem;
+}
+
+/* ============= إعدادات الصفحة الأساسية ============= */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Fustat', sans-serif;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    line-height: 1.6;
+}
+/* إعادة تعيين أي تنسيقات متعارضة */
+body[dir="rtl"] .div_top {
+    padding-right: 0 !important;
+}
+
+/* منع أي تأثيرات غير مرغوبة من المكتبات الخارجية */
+.material-icons {
+    box-sizing: content-box !important;
+    display: inline-flex !important;
+}
+/* ============= شريط التنقل العلوي ============= */
+.div_top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 1000;
+    box-shadow: 0 0.125rem 0.625rem rgba(0,0,0,0.2);
+    direction: ltr;
+    justify-content: space-between;
+}
+
+/* عناصر شريط التنقل الموحدة */
+.acunt, 
+.darkmood, 
+.add {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0.3rem; /* توحيد المسافات */
+    padding: 0.3rem; /* إضافة padding موحد */
+}
+/* تأكيد إزالة الفراغات في جميع الحالات */
+.acunt {
+    min-width: auto !important;  /* عدم فرض عرض أدنى */
+    flex-grow: 0 !important;  /* منع التمدد التلقائي */
+}
+.acunt { 
+    order: 1; 
+    margin-right: auto; /* لضبط المحاذاة */
+}
+
+.darkmood { 
+    order: 2; 
+}
+
+.add { 
+    order: 3; 
+}
+
+.alanwan { 
+    order: 4; 
+    margin-left: auto;
+}
+
+/* أيقونات شريط التنقل */
+.acunt i, 
+.darkmood i {
+    font-size: 2rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.acunt i, 
+.darkmood i {
+    aspect-ratio: 1/1; /* للتأكد من تساوي الأبعاد */
+}
+.darkmood i{
+    position: relative;
+    top: 0.2rem;
+}
+
+/* زر الإضافة المحسن */
+.add button {
+    border: 1px solid var(--secondary-bg);
+    background-color: var(--secondary-bg);
+    border-radius: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    min-width: 6rem;
+    min-height: 2rem;
+}
+
+.add button:hover {
+    background-color: rgba(255, 177, 0, 0.1);
+}
+
+.add button i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+/* الشعار */
+.alanwan img {
+    max-height: 3.7125rem;
+    width: 8.6875rem;
+}
+
+/* ============= مربع البحث ============= */
+.searsh1 {
+    position: relative;
+    margin-top: 5rem;
+    padding: 0 var(--spacing-unit);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+}
+
+#searsh2 {
+    width: 80%;
+    height: 3.125rem;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border-radius: 1.5625rem 0 0 1.5625rem;
+    border: none;
+    font-size: 1rem;
+    padding: 0 0.9375rem;
+    text-align: right;
+}
+
+#searsh2::placeholder {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    text-indent: 1.0625rem;
+}
+
+.searsh_aicon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: #000;
+    border: 0.0625rem solid var(--primary-color);
+    font-size: 1.75rem;
+    width: 20%;
+    height: 3.125rem;
+    border-radius: 0 1.5625rem 1.5625rem 0;
+}
+
+.searsh_aicon i {
+    float: right;
+}
+
+/* ============= تصنيفات الأفلام ============= */
+.altasnef {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.625rem;
+    padding: 0.9375rem;
+    margin-top: 1.25rem;
+}
+
+.div_film {
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    padding: 0.9375rem 0;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.span_altasnef {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: white;
+}
+
+.film, .mosalsal, .tv, .mnua {
+    width: 2.8125rem;
+    height: 2.8125rem;
+}
+
+/* ============= أقسام الأفلام والمسلسلات ============= */
+.div_almumayzh {
+    margin-top: 1.25rem;
+    padding: 0 0.9375rem;
+}
+
+.div_almumayzh1_1 {
+    height: 18rem;
+}
+
+.div_alaflam_1 {
+    height: auto;
+    padding-bottom: 1rem;
+}
+.div_alaflam {
+position: relative;
+bottom: 2rem;
+}
+
+.hr1, .hr2 {
+    width: 100%;
+    height: 0.0938rem;
+    background: linear-gradient(to right, rgba(231, 227, 227, 0.7) 83%, var(--primary-color) 17%);
+    margin: 0.625rem 0;
+}
+
+/* قوائم الأفلام */
+.div_img_almumayzh {
+    display: flex;
+    gap: 0.7300rem;
+    padding: 0 0.9375rem 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.div_img_almumayzh a {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+}
+
+.div_img_almumayzh a img {
+    width: 12.5rem;
+    height: 23.75rem;
+    padding-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+/* تنسيقات أساسية للأقسام */
+.featured-section, 
+.movies-section {
+    position: relative;
+    z-index: 10; /* تأكد أنه فوق العناصر الثابتة */
+    margin-top: 2rem; /* مسافة علوية */
+    scroll-margin-top: 5rem; /* لمنع التداخل مع الشريط الثابت */
+}
+
+.section-spacer {
+    height: 40px; /* مسافة بين القسمين */
+    clear: both;
+}
+
+/* تعديلات خاصة للابتوب */
+@media (min-width: 1024px) {
+    .featured-section {
+        margin-top: 4rem; /* مساحة أكبر */
+        padding-bottom: 2rem; /* حشو سفلي */
+    }
+    
+    .movies-section {
+        margin-top: 3rem;
+        padding-top: 2rem; /* حشو علوي إضافي */
+        border-top: 1px solid rgba(255, 177, 0, 0.2); /* خط فاصل */
+    }
+}
+/* تنسيق أفلام الشبكة */
+.div_img_alaflam {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    gap: 0.1rem;
+    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.div_img_alaflam a {
+    width: 100%;
+    display: block;
+}
+
+.div_img_alaflam a img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+/* ============= زر المزيد ============= */
+.div_almazeed {
+    width: 100%;
+    height: 5rem;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_almazeed button {
+    width: 11rem;
+    height: 3.2rem;
+    background-color: var(--secondary-bg);
+    border: none;
+    border-radius: 11rem;
+    font-family: 'Fustat', sans-serif;
+}
+
+.div_almazeed a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+.div_almazeed i {
+    font-size: 1.7rem;
+    position: relative;
+    top: 0.4rem;
+}
+
+/* ============= القائمة المنسدلة ============= */
+.div_button_aksam_alaflam {
+    position: relative;
+    display: inline-block;
+}
+
+.button_alkaymh {
+    font-family: 'Fustat', sans-serif;
+    font-weight: 900;
+    background: none;
+    color: var(--primary-color);
+    padding: 0.625rem 1.25rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.div_kaymt_aksam_alaflam {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+}
+
+.div_kaymt_aksam_alaflam a {
+    padding: 0.625rem 1.25rem;
+    color: var(--text-color);
+    display: block;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.div_kaymt_aksam_alaflam.show {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+/* ============= تأثيرات الحركة ============= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-0.625rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.div_film:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(255, 177, 0, 0.2);
+}
+
+.div_img_almumayzh a img:hover {
+    transform: scale(1.07);
+    z-index: 1;
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.3);
+}
+
+.div_img_alaflam a img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.add button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 177, 0, 0.1);
+}
+
+.acunt i:hover, 
+.darkmood i:hover, 
+.add button:hover {
+    opacity: 0.9;
+}
+
+.acunt i:active, 
+.darkmood i:active, 
+.add button:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+.div_kaymt_aksam_alaflam a:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+/* ============= الوضع الليلي ============= */
+.dark-mode {
+    --dark-bg: #0a0a0a;
+    --secondary-bg: #121212;
+    --text-color: #e0e0e0;
+}
+/* ============= استعلامات الوسائط ============= */
+
+/* ============= لأجهزة الكمبيوتر الكبيرة (شاشات عريضة) ============= */
+@media (min-width: 1200px) {
+    
+    .div_img_alaflam {
+        grid-template-columns: repeat(5, minmax(18%, 1fr)) !important;
+        gap: 1rem !important;
+    }
+
+    .div_img_almumayzh a img {
+        width: 14rem !important;
+        height: 21rem !important;
+    }
+}
+/* ============= لأجهزة الكمبيوتر المتوسطة (لابتوب) ============= */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    /* تنسيقات جديدة للقسم المميز */
+.div_img_almumayzh {
+    display: flex;
+    gap: 1.5rem; /* مسافة بين الصور */
+    padding: 0 2rem 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* إخفاء شريط التمرير في Firefox */
+}
+
+.div_img_almumayzh::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير في Chrome/Safari */
+}
+
+.div_img_almumayzh a {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 23%; /* عرض الصورة بالنسبة للشاشة */
+    min-width: 280px; /* أقل عرض مسموح */
+    transition: transform 0.3s ease;
+}
+
+.div_img_almumayzh a img {
+    width: 100%;
+    height: 380px; /* ارتفاع ثابت */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+    .div_img_alaflam {
+        grid-template-columns: repeat(4, minmax(22%, 1fr)) !important;
+    }
+}
+/* ============= استعلامات الوسائط ============= */
+@media (min-width: 768px) {
+    .div_img_alaflam {
+        grid-template-columns: repeat(auto-fill, minmax(39%, 1fr));
+    }
+    
+    .div_img_almumayzh a {
+        width: 30%;
+    }
+}
+/* القائمة الشبكية (أفلام/مسلسلات) */
+@media (max-width: 768px) {
+     /* تعديل تنسيق العناصر في الشريط العلوي للهواتف */
+     .div_top {
+        padding-left: 0 !important;  /* إزالة الحشو الأيسر تماماً */
+        padding-right: 0rem !important;  /* حشو أيمن صغير فقط */
+    }
+    .acunt {
+        margin-left: 0 !important;  /* إزالة أي هامش أيسر */
+        margin-right: 0 !important; /* إزالة أي هامش يميني */
+        padding-left: 0.1rem !important;  /* حشو داخلي صغير فقط */
+        order: 1 !important; /* التأكد من أنها أول عنصر */
+    }
+    .acunt i, .darkmood i {
+        font-size: 1.8rem !important;
+        width: 1.8rem !important;
+        height: 1.8rem !important;
+    }
+
+    .div_img_alaflam {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 أعمدة بدلاً من 2 */
+        gap: 0rem !important; /* تقليل الفجوة بين الصور */
+    }
+
+    /* تصنيفات الأفلام (أيقونات الأفلام/مسلسلات/تلفزيون/منوعات) */
+    .altasnef {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* تعديل حجم الصور لتناسب 3 في السطر */
+    .div_img_alaflam a img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 2/3; /* نسبة العرض إلى الارتفاع */
+        min-width: 100px; /* حد أدنى للعرض */
+    }
+    /*.div_img_alaflam {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+    
+    */
+    
+    .add button {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        min-width: 8rem;
+    }
+    
+    .add button i {
+        font-size: 1.1rem;
+    }
+    
+    #searsh2 {
+        height: 2.7625rem;
+        font-size: 0.875rem;
+    }
+    
+    .searsh_aicon {
+        height: 2.6125rem;
+        font-size: 1.25rem;
+    }
+    .div_img_almumayzh a img {
+        width: 10rem !important; /* تصغير العرض */
+        height: 15rem !important; /* تصغير الارتفاع */
+    } 
+    .alanwan img {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .div_img_alaflam {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 أعمدة */
+        gap: 0.3rem !important; /* فجوات أصغر */
+    }
+
+    .div_img_alaflam a img {
+        min-width: 90px !important; /* تصغير الصور قليلاً */
+    }
+    .div_top {
+        height: 3.25rem;
+        padding: 0 0.5rem;
+    }
+    .acunt i, .darkmood i {
+        font-size: 1.6rem !important;
+        width: 1.6rem !important;
+        height: 1.6rem !important;
+    }
+    .add button {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.7rem;
+        min-width: 5rem;
+        gap: 0.3rem;
+    }
+
+    .add button a {
+        font-size: 0.75rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+    }
+    
+    .add button i {
+        font-size: 1rem !important;
+    }
+    
+    .div_img_alaflam {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .div_img_almumayzh a img, .div_img_alaflam a img {
+        width: 7rem !important;  /* تصغير العرض ليتناسب مع 3 صور في السطر */
+        height: 10.5rem !important;  /* الحفاظ على نسبة العرض إلى الارتفاع (2/3) */
+    }
+}
+
+@media (min-width: 480px) and (max-width: 800px) and (min-height: 1600px) {
+    .div_top {
+        height: 4rem;
+    }
+    
+    .add button {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        min-width: 6rem;
+    }
+    
+    .add button i {
+        font-size: 1.1rem;
+    }
+    
+    .acunt i, .darkmood i {
+        font-size: 2.5rem;
+    }
+    
+    .alanwan img {
+        max-height: 4rem;
+        width: 9.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .button-text {
+        font-size: 0.8rem;
+    }
+    .featured-section {
+        margin-top: 4rem; /* مساحة أكبر */
+        padding-bottom: 2rem; /* حشو سفلي */
+    }
+    
+    .movies-section {
+        margin-top: 3rem;
+        padding-top: 2rem; /* حشو علوي إضافي */
+        border-top: 1px solid rgba(255, 177, 0, 0.2); /* خط فاصل */
+    }
+}
+@media (max-width: 414px) { /* iPhone XR وأجهزة مماثلة */
+    /* القائمة الأفقية (أفلام/مسلسلات مميزة) */
+    .div_img_almumayzh a img {
+        width: 11rem !important;
+        height: 16.5rem !important;
+        min-width: 11rem; /* إضافة هذه الخاصية لمنع الانكماش */
+    }
+    
+    /* القائمة الشبكية (أفلام/مسلسلات عادية) */
+        .div_img_alaflam {
+            grid-template-columns: repeat(2, 180px); /* عرض ثابت 180px لكل عمود */
+            justify-content: center;
+        }
+    
+    .div_img_alaflam a {
+        width: 100%;
+    }
+    
+    .div_img_alaflam a img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3/4; /* جعل الصور أعرض قليلاً */
+        min-width: 100%; /* التأكد من استخدام العرض الكامل */
+    }
+    
+    /* تعديل الحاوية لضبط المساحة */
+    .div_img_alaflam {
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+    /* حل نهائي لمشكلة الفراغ في iOS */
+@supports (-webkit-touch-callout: none) {
+    .div_top {
+        padding-left: env(safe-area-inset-left, 0) !important;
+    }
+}
+}
+.div_altwasl{
+    width: 100%;
+    height: 6rem;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.div_altwasl button{
+    background: none;
+    border: none;
+    text-align: center;
+}
+.div_altwasl .icon{
+    width: 1.7rem;
+    height: 1.7rem;
+}
+.div_Aflamak{
+    width: 100%;
+    height: 2rem;
+}
+.div_Aflamak p{
+    color: rgb(100, 100, 100);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
